@@ -8,13 +8,8 @@ export async  function POST(request: Request) {
     const user: User = session?.user;
     if (!session || !session.user) {
         return Response.json(
-            {
-                success: false,
-                message: 'Not Authenticated'
-            },
-            {
-                status: 401
-            }
+            { success: false, message: 'Not Authenticated' },
+            { status: 401 }
         );
     }
 
@@ -35,25 +30,14 @@ export async  function POST(request: Request) {
         if (!updatedUser) {
             // User not found
             return Response.json(
-                {
-                    success: false,
-                    message: 'Unable to find user to update message acceptance status',
-                },
-                {
-                    status: 404
-                }
+                { success: false, message: 'Unable to find user to update message acceptance status',},
+                { status: 404 }
             );
         }
 
         return Response.json(
-            {
-                success: true,
-                message: 'Message acceptance status updated successfully',
-                updatedUser,
-            },
-            {
-                status: 200
-            }
+            { success: true, message: 'Message acceptance status updated successfully', updatedUser,},
+            { status: 200 }
         );
     } catch (error) {
         console.error('Error updating message acceptace status: ', error);
